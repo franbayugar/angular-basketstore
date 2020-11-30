@@ -1,5 +1,5 @@
 <h1>Lista de productos</h1>
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
             <th>Nombre</th>
@@ -10,17 +10,21 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let garment of garments'[ngClass]="{'clearance': garment.clearance}">
-            <td><p>{{garment.name}}</p><img class="img-thumbnail" [src]="garment.image" [alt]="garment.name"></td>
+        <tr *ngFor='let garment of garments' [ngClass]="{'clearance': garment.clearance}">
+            <td>
+                <p>{{garment.name}}</p><img class="img-thumbnail" [src]="garment.image" [alt]="garment.name">
+            </td>
             <td>{{garment.type}}</td>
             <td>{{garment.price | currency}}</td>
             <td><span class="badge badge-warning" *ngIf='garment.stock == 0'>Sin stock</span></td>
-            <td><button class="btn btn-sm btn-success" (click)="downQuantity(garment)">-</button>
-                <input type="text" 
-                [(ngModel)]= "garment.quantity" 
-                (keyup)="changeQuantity($event, garment)">
-                <button class="btn btn-sm btn-success" (click)="upQuantity(garment)">+</button></td>
-
+            <td>
+                <div class="d-flex">
+                    <button class="btn btn-sm btn-success" (click)="downQuantity(garment)">-</button>
+                    <input class="form-control" type="text" [(ngModel)]="garment.quantity"
+                        (keyup)="changeQuantity($event, garment)">
+                    <button class="btn btn-sm btn-success" (click)="upQuantity(garment)">+</button>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>

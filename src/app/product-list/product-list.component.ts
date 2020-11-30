@@ -55,11 +55,14 @@ export class ProductListComponent implements OnInit {
   changeQuantity(event, garment: Product) {
 
     if (event.key >= 0 || event.key <= 9 || event.key == "Backspace") {
+      if (garment.quantity > garment.stock) {
+        event.preventDefault();
+        garment.quantity = garment.stock;
+      }
     }
     else {
       event.preventDefault();
-
-      garment.quantity = garment.quantity;
+      garment.quantity = 0;
     }
   }
 }

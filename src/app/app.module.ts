@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
+import { StoreAboutComponent } from './store-about/store-about.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductGarmentsComponent } from './product-garments/product-garments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
+    StoreAboutComponent,
+    CartComponent,
+    ProductGarmentsComponent
   ],
   imports: [
     BrowserModule,
