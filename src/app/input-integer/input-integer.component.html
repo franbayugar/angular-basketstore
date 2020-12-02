@@ -1,0 +1,8 @@
+<td>
+    <div class="input-group-prepend d-flex">
+        <button class="btn btn-sm btn-success" (click)="downQuantity(garment)">-</button>
+        <input class="form-control" type="text" [(ngModel)]="garment.quantity"
+            (keyup)="changeQuantity($event, garment)">
+        <button class="btn btn-sm btn-success" (click)="upQuantity(garment)">+</button>
+    </div>
+</td>
