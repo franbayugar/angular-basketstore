@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductGarmentsComponent } from '../product-garments/product-garments.component';
 import { Product } from '../product-list/product';
 
@@ -12,29 +12,48 @@ export class InputIntegerComponent implements OnInit {
   constructor() {
   }
   @Input()
-  garment: Product;
+  quantity: number;
+  @Input()
+  max: number;
+  @Output()
+  quantityChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  maxReached: EventEmitter<string> = new EventEmitter<string>();
+
 
   ngOnInit(): void {
   }
-  upQuantity(garment: Product) {
-    if (garment.quantity < garment.stock)
-      garment.quantity++;
+  upQuantity() {
+    if (this.quantity < this.max) {
+      this.quantity++;
+      this.quantityChange.emit(this.quantity);
+    } else {
+      this.maxReached.emit('Se alcanzó el máximo');
+    }
+
   }
-  downQuantity(garment: Product) {
-    if (garment.quantity > 0)
-      garment.quantity--;
+  downQuantity() {
+    if (this.quantity > 0)
+      this.quantity--;
+    this.quantityChange.emit(this.quantity);
+
   }
-  changeQuantity(event, garment: Product) {
+  changeQuantity(event) {
 
     if (event.key >= 0 || event.key <= 9 || event.key == "Backspace") {
-      if (garment.quantity > garment.stock) {
+      if (this.quantity > this.max) {
         event.preventDefault();
-        garment.quantity = garment.stock;
+        this.quantity = this.max;
+        this.quantityChange.emit(this.quantity);
+
       }
     }
     else {
       event.preventDefault();
-      garment.quantity = 0;
+      this.quantity = 0;
+      this.quantityChange.emit(this.quantity);
+
     }
   }
 }

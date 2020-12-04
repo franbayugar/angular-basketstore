@@ -17,7 +17,10 @@
             <td>{{garment.type}}</td>
             <td>{{garment.price | currency}}</td>
             <td><span class="badge badge-warning" *ngIf='garment.stock == 0'>Sin stock</span></td>
-            <app-input-integer [garment]='garment'></app-input-integer>
+            <td>
+                <app-input-integer [(quantity)]='garment.quantity' [max]='garment.stock'
+                    (maxReached)='maxReached($event)'></app-input-integer>
+            </td>
         </tr>
     </tbody>
 </table>
