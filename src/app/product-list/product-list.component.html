@@ -7,6 +7,7 @@
             <th>Precio</th>
             <th>Stock</th>
             <th>Compra</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,11 @@
             <td>
                 <app-input-integer [(quantity)]='garment.quantity' [max]='garment.stock'
                     (maxReached)='maxReached($event)'></app-input-integer>
+            </td>
+            <td>
+                <div>
+                    <button class="btn btn-sm btn-warning" (click)="addToCart(garment)">Comprar</button>
+                </div>
             </td>
         </tr>
     </tbody>
