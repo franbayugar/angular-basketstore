@@ -1,0 +1,28 @@
+{
+    "garments": {
+        "0": {
+            "name": "Miami Heat - Jimmy Butler",
+            "type": "Camiseta",
+            "price": 1900,
+            "stock": 3,
+            "image": "https://fotos.subefotos.com/61e66bc1c41fa254fd40e0f7d82a3da0o.png",
+            "clearance": false
+        },
+        "1": {
+            "name": "Dallas Mavericks - Luka Doncic",
+            "type": "Remera",
+            "price": 2100,
+            "stock": 2,
+            "image": "https://fotos.subefotos.com/51be8c802c0b66d911b614f685aa86f9o.jpg",
+            "clearance": true
+        },
+        "2": {
+            "name": "Los Angeles Lakers",
+            "type": "Short",
+            "price": 1300,
+            "stock": 0,
+            "image": "https://fotos.subefotos.com/142f1f453c76aa3f6652b64924c90203o.jpg",
+            "clearance": false
+        }
+    }
+}

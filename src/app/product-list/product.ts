@@ -7,3 +7,4 @@ export interface Product {
     clearance: boolean;
     quantity: number;
 }
+

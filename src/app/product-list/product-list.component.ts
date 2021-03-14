@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GarmentCartService } from '../garment-cart.service';
+import { GarmentDataService } from '../garment-data.service';
 import { Product } from './product';
 
 @Component({
@@ -9,42 +10,16 @@ import { Product } from './product';
 })
 export class ProductListComponent implements OnInit {
 
-  garments: Product[] = [
-    {
-      name: "Miami Heat - Jimmy Butler",
-      type: "Camiseta",
-      price: 1900,
-      stock: 3,
-      image: "assets/images/jimmy-buttler.png",
-      clearance: false,
-      quantity: 0,
+  garments: Product[] = [];
 
-    },
-    {
-      name: "Dallas Mavericks - Luka Doncic",
-      type: "Remera",
-      price: 2100,
-      stock: 2,
-      image: "assets/images/doncic.jpg",
-      clearance: true,
-      quantity: 0,
-    },
-    {
-      name: "Los Angeles Lakers",
-      type: "Short",
-      price: 1300,
-      stock: 0,
-      image: "assets/images/lakers-short.jpg",
-      clearance: false,
-      quantity: 0,
-
-    }
-  ]
-  constructor(private cart: GarmentCartService) {
+  constructor(private cart: GarmentCartService,
+    private garmentsDataService: GarmentDataService) {
 
   }
 
   ngOnInit(): void {
+    this.garmentsDataService.getAll()
+      .subscribe(garments => this.garments = garments);
   }
   maxReached(m: string) {
     alert(m);
